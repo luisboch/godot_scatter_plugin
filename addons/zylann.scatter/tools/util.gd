@@ -16,6 +16,9 @@ static func get_scene_aabb(node, aabb=AABB()):
 static func get_instance_root(node):
 	# TODO Could use `owner`?
 	while node != null and node.filename == "":
+               # when scene is not saved yet, root will be the fist without parent
+		if node.get_parent() == null:
+			return node
 		node = node.get_parent()
 	return node
 
